@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:servizio_x/core/theme/app_color.dart';
+
 // this class contains the text styles used in the app
 class TextStyles {
   static const TextStyle darkGreenBold = TextStyle(
@@ -17,5 +18,13 @@ class TextStyles {
   static const TextStyle greyW400 = TextStyle(
     color: AppColor.grey,
     fontWeight: FontWeight.w400,
+  );
+  static const TextStyle lightGreyW400 = TextStyle(
+    color: AppColor.lightGrey,
+    fontWeight: FontWeight.w400,
+  );
+  static const TextStyle blackW500 = TextStyle(
+    color: AppColor.black,
+    fontWeight: FontWeight.w500,
   );
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:servizio_x/core/helpers/app_extensions.dart';
 
 import 'package:servizio_x/core/helpers/size_boxes.dart';
+import 'package:servizio_x/core/router/routes_names.dart';
 
 import 'package:servizio_x/core/theme/app_color.dart';
 
@@ -117,8 +118,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             GestureDetector(
               onTap: () {
                 pageController.page == 2
-                    //TODO: implement the navigation to login
-                    ? null
+                    //navigate to login screen when on the last page.
+                    ? Navigator.pushReplacementNamed(
+                      context,
+                      RoutesNames.loginScreen,
+                    )
+                    //change to the next view
                     : pageController.nextPage(
                       duration: Duration(milliseconds: 400),
                       curve: Curves.linear,
@@ -130,7 +135,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 valueListenable: buttonText,
                 builder: (context, value, child) {
                   //* Primary button: dynamic text (Continua / Inizia).
-                  return primaryButton(text: value, context: context);
+                  return Container(
+                    margin: EdgeInsets.symmetric(horizontal: 40.w(context)),
+                    child: primaryButton(text: value, context: context),
+                  );
                 },
               ),
             ),

@@ -108,9 +108,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 heightSize(20, context),
                 Align(
                   alignment: Alignment.centerRight,
-                  child: AutoSizeText(
-                    'Hai dimenticato la password?',
-                    style: TextStyles.darkGreenW500,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        RoutesNames.forgotPasswordScreen,
+                      );
+                    },
+                    child: AutoSizeText(
+                      'Hai dimenticato la password?',
+                      style: TextStyles.darkGreenW500,
+                    ),
                   ),
                 ),
                 heightSize(10, context),

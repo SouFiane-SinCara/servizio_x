@@ -13,12 +13,14 @@ class PrimaryTextField extends StatefulWidget {
   final String? title;
   final TextInputAction? textInputAction;
   final String? Function(String?)? validator;
+  final bool? enabled;
 
   const PrimaryTextField({
     super.key,
     required this.controller,
     required this.hintText,
     required this.suffixIcon,
+    this.enabled,
     this.title,
     this.textInputAction,
     this.validator,
@@ -46,6 +48,7 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
             ),
           TextFormField(
             validator: widget.validator,
+            enabled: widget.enabled,
             textInputAction: widget.textInputAction ?? TextInputAction.next,
             obscureText: widget.obscureText ?? false,
             controller: widget.controller,

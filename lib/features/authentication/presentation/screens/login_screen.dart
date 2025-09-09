@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:servizio_x/core/helpers/app_extensions.dart';
 import 'package:servizio_x/core/helpers/size_boxes.dart';
+import 'package:servizio_x/core/router/routes_names.dart';
 import 'package:servizio_x/core/theme/app_color.dart';
 import 'package:servizio_x/core/theme/text_styles.dart';
 import 'package:servizio_x/core/widgets/primary_button.dart';
@@ -16,8 +17,22 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  late TextEditingController emailController;
+  late TextEditingController passwordController;
+  @override
+  void initState() {
+    super.initState();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   bool obscurePassword = true;
   @override
   Widget build(BuildContext context) {
@@ -154,10 +169,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyles.greyW500.copyWith(fontSize: 13),
                       maxLines: 2,
                     ),
-                    AutoSizeText(
-                      'Registrati qui',
-                      style: TextStyles.darkGreenW500..copyWith(fontSize: 13),
-                      maxLines: 2,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, RoutesNames.signupScreen);
+                      },
+                      child: AutoSizeText(
+                        'Registrati qui',
+                        style: TextStyles.darkGreenW500..copyWith(fontSize: 13),
+                        maxLines: 2,
+                      ),
                     ),
                   ],
                 ),
